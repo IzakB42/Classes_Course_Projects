@@ -2,8 +2,17 @@ using System;
 
 class Program
 {
-    static void Main(string[] args)
-    {
+        static void Main(string[] args)
+        {
+            DisplayWelcome();
+            string name = PromptUserName();
+            int favorite_number = PromptUserNumber();
+            int birth_year = PromptUserBirthYear();
+            double squared = SquareNumber(favorite_number);
+            DisplayResult(name, squared, birth_year);
+
+
+        }    
         static void DisplayWelcome()
         {
             Console.WriteLine("Welcome to the Program!");
@@ -25,16 +34,16 @@ class Program
             return int.Parse(Console.ReadLine());
         }
 
-        static int SquareNumber(int number)
+        static double SquareNumber(int number)
         {
-            int squared = int.Parse(Math.Pow(number, 2));
+            double squared = Math.Pow(number, 2);
             return squared;
         }
-        static string DisplayResult(string name, int squared, int year)
+        static void DisplayResult(string name, double squared, int year)
         {
             int age = 2026 - year;
             Console.WriteLine($"{name}, the square of your number is {squared}.");
             Console.WriteLine($"{name}, you will turn {age} this year.");
         }
-    }
+
 }
