@@ -13,33 +13,42 @@ class Program
 
         Console.Write("What would you like to do? ");
         int choice = int.Parse(Console.ReadLine());
+        Journal newJournal = new Journal();
 
+        do
+        {
         // include a while loop that brings up the menu choices after the readlines 
         // as long as the choice isn't 5. Might be easiest to make the menu a function.
-        if (choice == 1)
-        {
-            // Display Random Prompt and run NewEntry function
-        }
+            if (choice == 1)
+            {
+                // DateTime date1 = DateTime.Now;
+                Entry newEntry = new Entry();
+                newEntry.WriteEntry();
 
-        if (choice == 2)
-        {
+                newJournal.AddEntry(newEntry);
+            // Display Random Prompt and run NewEntry function
+            }
+
+            if (choice == 2)
+            {
             // run Display Journal Program, make sure it records all entries and the datetime 
             // for each.
-        }
+            }
 
-        if (choice == 3)
-        {
+            if (choice == 3)
+            {
             // Run LoadJournal from ReadFiles class
-        }
+            }
 
-        if (choice == 4)
-        {
+            if (choice == 4)
+            {
             // run SaveJournal from ReadFiles class
-        }
+            }
 
-        if (choice == 5)
-        {
-            // Quit, end the while loop that brings up the menu choices.
-        }
+            else
+            {
+                Console.Write("Try again, just input the number of the what you would like to do: ");
+            }
+        }while(choice!=5);
     }
 }
