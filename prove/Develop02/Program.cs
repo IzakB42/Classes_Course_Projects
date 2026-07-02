@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 
 class Program
 {
@@ -24,15 +25,14 @@ class Program
                 // DateTime date1 = DateTime.Now;
                 Entry newEntry = new Entry();
                 newEntry.WriteEntry();
-
-                newJournal.AddEntry(newEntry);
+                
+                newJournal.AddEntry();
             // Display Random Prompt and run NewEntry function
             }
 
             if (choice == 2)
             {
-            // run Display Journal Program, make sure it records all entries and the datetime 
-            // for each.
+                newJournal.DisplayJournal();
             }
 
             if (choice == 3)

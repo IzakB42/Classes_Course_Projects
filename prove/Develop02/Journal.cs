@@ -8,5 +8,12 @@ public class Journal
     public void AddEntry(Entry entry)
     {
         newJournal.Add(entry);
+        
+    }
+        public void DisplayJournal()
+    {
+        // foreach (string Entry in journal)
+        // Console.WriteLine(Entry);
+        // Maybe better in the journals class?
     }
 }

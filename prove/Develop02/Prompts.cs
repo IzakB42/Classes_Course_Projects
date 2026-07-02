@@ -14,7 +14,9 @@ public class Prompts
     }
     public string _RandomPrompt()
     {
-        // Get random prompt from list
-        return "placeholder prompt";
+        Random rnd = new Random();
+        int index = rnd.Next(prompt_list.Count);
+        // Console.WriteLine(prompt_list[index]);
+        return prompt_list[index];
     }
 }
