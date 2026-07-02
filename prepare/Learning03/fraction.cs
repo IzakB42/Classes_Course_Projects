@@ -5,17 +5,17 @@ public class Fraction
     private int _top;
     private int _bottom;
 
-    Fraction()
+    public Fraction()
     {
         _top = 1;
         _bottom = 1;
     }
-    Fraction(int wholeNumber)
+    public Fraction(int wholeNumber)
     {
         _top = wholeNumber;
         _bottom = 1;
     }
-    Fraction(int top, int bottom)
+    public Fraction(int top, int bottom)
     {
         _top = top;
         _bottom = bottom;
@@ -35,19 +35,26 @@ public class Fraction
     }
     public void SetBottom(int bottom)
     {
-        _bottom = bottom;
+        if (bottom != 0)
+        {
+            _bottom = bottom;
+        }
+        else
+        {
+            _bottom = 1;
+        }
     }
     public string GetFractionString()
     {
         
 
-        return "";
+        return $"{_top}/{_bottom}";
     }
 
     public double GetDecimalValue()
     {
         
-        
-        return 0.0;
+        return (double)_top/(double)_bottom;
+        // If doubles aren't included, method returns int.
     }
 }
