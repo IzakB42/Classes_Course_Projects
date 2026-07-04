@@ -6,7 +6,7 @@ public class Entry
     public string _finalEntry;
 
     
-    public string WriteEntry()
+    public void WriteEntry()
     {
         DateTime currentTime = DateTime.Now;
         string _dateTime = currentTime.ToShortDateString();
@@ -19,8 +19,11 @@ public class Entry
         
         _newEntry = Console.ReadLine();
 
-        _finalEntry = @$"Date: {_dateTime} - Prompt: {_prompt} \n {_newEntry}";
+        _finalEntry = $"Date: {_dateTime} - Prompt: {_prompt} \n {_newEntry}";
+    }
 
+    public string GetEntry()
+    {
         return _finalEntry;
     }
 }
