@@ -1,13 +1,13 @@
+using System;
 using System.IO;
+using System.Collections.Generic;
 using System.Reflection.Metadata;
 
 public class Journal
 {
-    public Constant string _fileName = "journal.txt";
     public List<Entry> newJournal = new List<Entry>();
-    // refer to W01 prep for how to use date-time library.
-    // Include a date-time string for each entry
-
+    
+    // public string _filename;
 
     public void AddEntry(Entry entry)
     {
@@ -21,9 +21,32 @@ public class Journal
             Console.WriteLine(entry.GetEntry());
         }
     }
-    public void SaveJournal(StreamWriter outputFile = new StreamWriter(_fileName))
+    public void ReadFiles(string file)
     {
-        
-        outputFile.WriteLine();
+        string[] lines = System.IO.File.ReadAllLines(file);
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split("#");
+
+            string date = parts[0];
+            string prompt = parts[1];
+            string entry = parts[2];
+            Console.WriteLine();
+        }
+    }
+    // private void SetFileName(string file)
+    // {
+    //     _filename = file;
+    // }
+    public void SaveJournal(string file)
+    {
+        using (StreamWriter outputFile = new StreamWriter(file))
+        {
+            foreach (Entry entry in newJournal)
+            {
+                outputFile.WriteLine(entry._finalEntry);
+            }
+        }
     }
 }

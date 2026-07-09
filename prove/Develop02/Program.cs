@@ -7,6 +7,7 @@ class Program
     {
         int choice;
         Journal newJournal = new Journal();
+        string file = "";
 
         do
         {
@@ -25,7 +26,8 @@ class Program
                 newEntry.WriteEntry();
                 
                 newJournal.AddEntry(newEntry);
-                // Don't need to pass in a variable, can pass in the class instead since writeEntry updates the variables.
+                // Don't need to pass in a variable, can pass in the class 
+                // instead since writeEntry updates the variables.
             }
 
             else if (choice == 2)
@@ -35,17 +37,26 @@ class Program
 
             else if (choice == 3)
             {
-            // Run LoadJournal from ReadFiles class
+                newJournal.ReadFiles(file);
             }
 
             else if (choice == 4)
             {
-            // run SaveJournal from ReadFiles class
+                Console.WriteLine("Where would you like to save this to? (type filename):");
+                file = Console.ReadLine();
+                newJournal.SaveJournal(file);
             }
 
             else
             {
-                Console.Write("Try again, just input the number of the what you would like to do: ");
+                if (choice==5)
+                {
+                    Console.WriteLine("Have a good day!");
+                }
+                else
+                {
+                    Console.Write("Try again, just input the number of the what you would like to do: ");
+                }
             }
         }while(choice!=5);
     }

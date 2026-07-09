@@ -19,7 +19,7 @@ public class Entry
         
         _newEntry = Console.ReadLine();
 
-        _finalEntry = $"Date: {_dateTime} - Prompt: {_prompt} \n {_newEntry}";
+        _finalEntry = $" #Date: {_dateTime} #Prompt: {_prompt} #Entry: {_newEntry}";
     }
 
     public string GetEntry()
