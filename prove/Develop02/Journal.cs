@@ -6,8 +6,6 @@ using System.Reflection.Metadata;
 public class Journal
 {
     public List<Entry> newJournal = new List<Entry>();
-    
-    // public string _filename;
 
     public void AddEntry(Entry entry)
     {
@@ -18,7 +16,7 @@ public class Journal
     {
         foreach (Entry entry in newJournal)
         {
-            Console.WriteLine(entry.GetEntry());
+            Console.WriteLine(entry.ToScreen());
         }
     }
     public void ReadFiles(string file)
@@ -31,21 +29,18 @@ public class Journal
 
             string date = parts[0];
             string prompt = parts[1];
-            string entry = parts[2];
-            Console.WriteLine();
+            string response = parts[2];
+            Entry displayE = new Entry(date, prompt, response);
+            Console.WriteLine(displayE.ToScreen());
         }
     }
-    // private void SetFileName(string file)
-    // {
-    //     _filename = file;
-    // }
     public void SaveJournal(string file)
     {
         using (StreamWriter outputFile = new StreamWriter(file))
         {
             foreach (Entry entry in newJournal)
             {
-                outputFile.WriteLine(entry._finalEntry);
+                outputFile.WriteLine(entry.ToFile());
             }
         }
     }

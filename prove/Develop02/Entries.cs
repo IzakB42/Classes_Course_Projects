@@ -1,29 +1,50 @@
+using System.Security.Cryptography.X509Certificates;
+
 public class Entry
 {
     public string _dateTime;
     public string _prompt;
-    public string _newEntry;
-    public string _finalEntry;
+    public string _response;
 
-    
+    public Entry()
+    {
+        _dateTime = "";
+        _prompt = "";
+        _response = "";
+    }
+    public Entry(string date, string prompt, string response)
+    {
+        _dateTime = date;
+        _prompt = prompt;
+        _response = response;
+    }
+
     public void WriteEntry()
     {
-        DateTime currentTime = DateTime.Now;
-        string _dateTime = currentTime.ToShortDateString();
-        Console.WriteLine(_dateTime);
-
+        SetDateTime();
+        
         Prompts _prompts = new Prompts();
         _prompts._MakePrompts();
         _prompt = _prompts._RandomPrompt();
         Console.WriteLine(_prompt);
-        
-        _newEntry = Console.ReadLine();
 
-        _finalEntry = $" #Date: {_dateTime} #Prompt: {_prompt} #Entry: {_newEntry}";
+        _response = Console.ReadLine();
+    }
+    public void SetDateTime()
+    {
+        DateTime currentTime = DateTime.Now;
+        _dateTime = currentTime.ToShortDateString();
     }
 
-    public string GetEntry()
+    public string ToFile()
     {
-        return _finalEntry;
+        SetDateTime();
+        return $"{_dateTime}#{_prompt}#{_response}";
+    }
+
+    public string ToScreen()
+    {
+        SetDateTime();
+        return $"Date: {_dateTime}\tPrompt: {_prompt}\nResponse: {_response}";
     }
 }

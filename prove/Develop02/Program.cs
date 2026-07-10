@@ -1,10 +1,12 @@
 using System;
+using System.Formats.Asn1;
 using System.Runtime.InteropServices;
 
 class Program
 {
     static void Main(string[] args)
     {
+        string answer;
         int choice;
         Journal newJournal = new Journal();
         string file = "";
@@ -18,18 +20,30 @@ class Program
             Console.WriteLine("4. Save");
             Console.WriteLine("5. Quit");
             Console.Write("What would you like to do? ");
-            choice = int.Parse(Console.ReadLine());
+            answer = Console.ReadLine();
+
+
+            // bool isNumber = Char.IsDigit(firstChar);
+
+            // if (!isNumber)
+            // {
+            //     Console.Write("Try again! Just input the number of the what you would like to do: ");
+            // }
+
+            // else
+            // {
+                choice = int.Parse(answer);
+            
 
             if (choice == 1)
-            {
-                Entry newEntry = new Entry();
-                newEntry.WriteEntry();
+                {
+                    Entry newEntry = new Entry();
+                    newEntry.WriteEntry();
                 
-                newJournal.AddEntry(newEntry);
+                    newJournal.AddEntry(newEntry);
                 // Don't need to pass in a variable, can pass in the class 
                 // instead since writeEntry updates the variables.
-            }
-
+                }
             else if (choice == 2)
             {
                 newJournal.DisplayJournal();
@@ -42,7 +56,7 @@ class Program
 
             else if (choice == 4)
             {
-                Console.WriteLine("Where would you like to save this to? (type filename):");
+                Console.WriteLine("Where would you like to save this to? (type filename, end with .txt):");
                 file = Console.ReadLine();
                 newJournal.SaveJournal(file);
             }
@@ -52,10 +66,6 @@ class Program
                 if (choice==5)
                 {
                     Console.WriteLine("Have a good day!");
-                }
-                else
-                {
-                    Console.Write("Try again, just input the number of the what you would like to do: ");
                 }
             }
         }while(choice!=5);
