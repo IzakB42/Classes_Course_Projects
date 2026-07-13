@@ -12,7 +12,7 @@ class Program
 
         string section = "9.42";
         string problems = "8_19";
-        Assignment math1 = new MathAssignment(name, topic, section, problems);
+        MathAssignment math1 = new MathAssignment(name, topic, section, problems);
         
         Console.WriteLine();
     }
